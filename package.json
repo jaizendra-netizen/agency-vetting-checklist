@@ -1,0 +1,9 @@
+{
+  "name": "agency-vetting-checklist",
+  "version": "1.0.0",
+  "description": "A neutral checklist and calculator for vetting a B2B lead generation agency before you sign.",
+  "type": "module",
+  "bin": { "agency-vet": "src/cli.ts" },
+  "scripts": { "test": "bun test" },
+  "license": "MIT"
+}

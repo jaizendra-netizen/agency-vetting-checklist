@@ -1,0 +1,14 @@
+{
+  "meeting-definition": true,
+  "data-source": true,
+  "deliverability": false,
+  "references": true,
+  "handoff": true,
+  "own-domains": true,
+  "own-lists": true,
+  "data-origin": true,
+  "domain-health": false,
+  "guarantee-no-criteria": false,
+  "no-visibility": false,
+  "no-handoff-plan": false
+}
