@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agency-vetting-checklist | OneGTMLab</title>
+<meta name="description" content="Neutral TypeScript (Bun) checklist and calculator for vetting a B2B lead generation agency: five checks, ownership questions, warning signs, pricing-model fit and cost per held meeting.">
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#1b1f23}pre{background:#f6f8fa;padding:1rem;overflow:auto}code{background:#f6f8fa;padding:.1em .3em}table{border-collapse:collapse}td,th{border:1px solid #d0d7de;padding:.3rem .6rem}</style>
+</head><body>
+<main>
+<h1 dir="auto">agency-vetting-checklist</h1>
+<p dir="auto">A TypeScript command-line checklist and calculator for vetting a B2B lead generation agency before you sign anything. It<br>
+implements the buyer criteria in<br>
+<a href="https://www.onegtmlab.dev/blog/best-b2b-lead-generation-agency">Best B2B Lead Generation Agency in 2026: 10 Agencies Compared</a>:<br>
+the five checks you can run in a week, the four ownership questions, the three warning signs, the three cases when you should<br>
+not hire yet, the three pricing models and what each fits, and the arithmetic for the real cost of a meeting. It is neutral:<br>
+no agency is named and no ranking is produced. A person answers; the code only counts. Runs on <a href="https://bun.sh">Bun</a>, no<br>
+dependencies.</p>
+<h2 dir="auto">Print the criteria</h2>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">bun src/cli.ts list</pre></div>
+<p dir="auto">Five checks: the meeting definition in writing (it names the buyer's role, the company type and what "held" means), where the<br>
+data comes from, deliverability numbers from a live campaign, two to three references, and the handoff plan (how meetings<br>
+reach your calendar, and what happens with reschedules and no-shows). Four ownership questions: who owns the sending domains<br>
+and inboxes when the contract ends, who owns the lists and can you export them, where the data comes from and how each<br>
+address is verified, and whether you can see domain health while campaigns run. Three warning signs: guaranteed meetings with<br>
+no qualification criteria, no visibility into data sources, domain health or deliverability, and no plan for handoffs,<br>
+reschedules or show rates.</p>
+<h2 dir="auto">Score the answers you collected</h2>
+<p dir="auto">Keep the answers in a file (<code class="notranslate">true</code>, <code class="notranslate">false</code> or leave an item out). For checks and ownership <code class="notranslate">true</code> means satisfied; for warning<br>
+signs <code class="notranslate">true</code> means the sign is present:</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">bun src/cli.ts score examples/answers.json
+<span class="pl-c"><span class="pl-c">#</span> Satisfied: 7</span>
+<span class="pl-c"><span class="pl-c">#</span> Open (ask again before signing): deliverability, domain-health</span></pre></div>
+<p dir="auto">It exits 1 while anything is open or a warning sign is present.</p>
+<h2 dir="auto">Should you wait?</h2>
+<p dir="auto">An agency multiplies a working offer; it rarely fixes a missing one. Wait if you cannot name your buyer, if the deal is too<br>
+small for the meeting cost, or if no one can take the meetings:</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">bun src/cli.ts <span class="pl-c1">wait</span> --buyer-named no --can-take-meetings yes --deal-covers-meeting yes
+<span class="pl-c"><span class="pl-c">#</span> Wait. Fix the gap first:</span>
+<span class="pl-c"><span class="pl-c">#</span> - Name your buyer: talk to ten customers.</span></pre></div>
+<h2 dir="auto">Which pricing model fits</h2>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">bun src/cli.ts model --buyer-clear yes --offer-proven yes --enough-accounts no
+<span class="pl-c"><span class="pl-c">#</span> meeting-based: You pay for an outcome, so the definition of a meeting carries all the weight. ...</span></pre></div>
+<p dir="auto">Pay per meeting (or a guaranteed count) fits a proven offer with a clear buyer. A monthly retainer fits when the list and the<br>
+message still need testing. A dedicated SDR fits when you have enough accounts to keep a rep busy every day.</p>
+<h2 dir="auto">What a meeting really costs</h2>
+<p dir="auto">The invoice is only part of the cost; tools, data and setup change the real number. Ask every agency for one number that covers<br>
+all three, then judge on held meetings, not on sends or opens:</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">bun src/cli.ts price --amount 4000 --per 4weeks --tools 300 --setup 1500 --months 3 --held 12
+bun src/cli.ts breakeven --meeting-cost 500 --deal-value 10000   <span class="pl-c"><span class="pl-c">#</span> 5.0% of held meetings</span></pre></div>
+<p dir="auto">A price quoted per 4 weeks is converted at 13 periods a year. The figures above are made up for the example; use the numbers<br>
+from your own quotes. A low price per meeting means little until you know what counts as a meeting.</p>
+<h2 dir="auto">Test</h2>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">bun <span class="pl-c1">test</span></pre></div>
+<p dir="auto">MIT licensed.</p>
+</main>
+<footer><p>Source: <a href="https://github.com/jaizendra-netizen/agency-vetting-checklist">github.com/jaizendra-netizen/agency-vetting-checklist</a>. Maintained by <a href="https://www.onegtmlab.dev">OneGTMLab</a>.</p></footer>
+</body></html>

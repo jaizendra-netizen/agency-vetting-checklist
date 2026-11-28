@@ -1,0 +1,10 @@
+{
+  "name": "agency-vetting-checklist",
+  "description": "Neutral TypeScript (Bun) checklist and calculator for vetting a B2B lead generation agency: five checks, ownership questions, warning signs, pricing-model fit and cost per held meeting.",
+  "sidebar": [
+    {
+      "title": "Overview",
+      "href": "/"
+    }
+  ]
+}
